@@ -5,7 +5,9 @@ import { BgColor } from "../types";
 export class GeminiService {
   static async removeBackground(base64Image: string, mimeType: string, bgColor: BgColor = 'white'): Promise<string> {
     // Always use exactly this initialization format as per @google/genai guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ 
+  apiKey: import.meta.env.VITE_GEMINI_API_KEY 
+});
     
     try {
       const response = await ai.models.generateContent({
